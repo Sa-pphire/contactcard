@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <link rel="stylesheet" href="styles.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <h2>QR Generator</h2>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <h2>Generate Your QR Code</h2>
+            
+            <div class="generator">
+                <!-- Form Section -->
+                <div class="form-container">
+                    <form action="/generate" method="POST" enctype="multipart/form-data">
+                        <title>Page Color</title>
+                        <label>Choose Custom Color</label>
+                        <input type="color" name="bgColor" value="#ffffff">
+
+                        <title>Page Information</title>
+                        <label>Full Name</label>
+                        <input type="text" name="fullName" placeholder="Steve Jobs" required>
+                        
+                        <label>Profile Image</label>
+                        <input type="file" name="image" accept="image/*" required>
+
+                        <label>Phone Number</label>
+                        <input type="text" name="phoneNumber" placeholder="111-1111-1111">
+
+                        <label>E-mail Address</label>
+                        <input type="email" name="email" placeholder="contact@stevejobs.com" required>
+
+                        <label>Website</label>
+                        <input type="text" name="website" placeholder="https://stevejobs.com" required>
+
+                        <label>Company Name</label>
+                        <input type="text" name="company" placeholder="Apple">
+
+                        <label>Your Job</label>
+                        <input type="text" name="role" placeholder="Founder" required>
+
+                        <title>Address</title>
+                        <label>Street Address</label>
+                        <input type="text" name="address" placeholder="One infinite loop" required>
+
+                        <label>City</label>
+                        <input type="text" name="city" placeholder="Cupertino">
+
+                        <label>State</label>
+                        <input type="text" name="state" placeholder="CA" required>
+
+                        <label>Zip</label>
+                        <input type="text" name="zip" placeholder="95014" required>
+
+                        <label>Country</label>
+                        <input type="text" name="country" placeholder="United States">
+
+                        <title>Social Media</title>
+                        <label>Linkedin Profile URL</label>
+                        <input type="text" name="linkedin" placeholder="https://linkedin.com/stevejobs" required>
+
+                        <button type="submit"><i class="fas fa-qrcode"></i> Generate QR</button>
+                    </form>
+                </div>
+
+                <!-- QR Code Preview Section -->
+                <div class="qr-preview">
+                    <h3>QR Code Preview</h3>
+                    <% if (qrImage) { %>
+                        <div class="qr-card">
+                            <img src="<%= qrImage %>" alt="QR Code">
+                            <a href="<%= qrDownload %>" download="qr_code.png">
+                                <button><i class="fas fa-download"></i> Download QR</button>
+                            </a>
+                        </div>
+                    <% } else { %>
+                        <p class="placeholder">Your QR code will appear here.</p>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
