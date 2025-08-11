@@ -9,7 +9,6 @@ require("dotenv").config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-//This is a change i would like to implement
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGO_URI);
